@@ -4,6 +4,7 @@
 . utils/dir_stack.sh
 . utils/err.sh
 . utils/exists.sh
+. utils/logger.sh
 
 if ! exists tar; then
     err "Please install tar"
@@ -14,8 +15,7 @@ pushd sources
 
 if ! [ -d "musl-$MUSL_VERSION" ]; then
     echo ":: Extracting musl libc"
-    echo ":: Log file is musl.extract.log"
-    tar xvf musl.tgz > musl.extract.log
+    log musl.extract.log tar xvf musl.tgz
 fi
 echo ":: Musl libc extracted"
 

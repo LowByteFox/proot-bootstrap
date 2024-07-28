@@ -18,16 +18,16 @@ fi
 
 pushd sources
 
-if ! [ -f "musl.compiled" ]; then
-    pushd musl-$MUSL_VERSION
-    echo ":: Configuring musl libc"
-    log musl.configure.log ./configure $MUSL_CFG
-    echo ":: Compiling musl libc"
-    log_both musl.compilation.log make -j$(nproc)
+if ! [ -f "tcc.compiled" ]; then
+    pushd tinycc
+    echo ":: Configuring TinyCC"
+    log tcc.configure.log ./configure $TCC_CFG
+    echo ":: Compiling TinyCC"
+    log_both tcc.compilation.log make -j$(nproc)
     popd
 
-    touch musl.compiled
+    touch tcc.compiled
 fi
-echo ":: Musl libc compiled"
+echo ":: TinyCC compiled"
 
 popd

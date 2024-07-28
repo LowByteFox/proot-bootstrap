@@ -4,6 +4,7 @@
 . utils/dir_stack.sh
 . utils/err.sh
 . utils/exists.sh
+. utils/logger.sh
 
 if ! exists make; then
     err "Please install make"
@@ -15,8 +16,7 @@ pushd sources
 if ! [ -f "musl.installed" ]; then
     pushd musl-$MUSL_VERSION
     echo ":: Installing musl libc into the rootfs"
-    echo ":: Log file is musl.install.log"
-    DESTDIR="$ROOTFS" make install > ../musl.install.log
+    log musl.install.log make DESTDIR="$ROOTFS" install
     popd
 
     touch musl.installed

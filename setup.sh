@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 . utils/err.sh
-. ./envs.sh
 
 stages=$(find . -type d -name "*-stage" | sed "s/\.\///" | sort -n)
 
@@ -11,8 +10,13 @@ if ! [ -d rootfs ]; then
     exit 1
 fi
 
-ROOTFS="$(pwd)/rootfs"
+SRCDIR=$(pwd)
+ROOTFS=$(pwd)/rootfs
+export SRCDIR
 export ROOTFS
+
+# In case something wants ROOTFS
+. ./envs.sh
 
 if ! [ -d sources ]; then
     mkdir sources

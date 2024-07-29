@@ -1,17 +1,13 @@
 #!/bin/sh
 # SPDX-License-Identifier: BSD-2-Clause
 
+# You have to source this file, not run it!
 
 . utils/err.sh
 . utils/dir_stack.sh
 
 if ! [ -d rootfs ]; then
     err "Please run ./prepare.sh first"
-    exit 1
-fi
-
-if [ "$0" != "$(basename $SHELL)" ]; then
-    err "Source the file, do not run it!"
     exit 1
 fi
 

@@ -20,7 +20,7 @@ if ! [ -f "tcc.installed" ]; then
     popd
 
     echo ":: Fixing libtcc1.a and runmain.o installation"
-    pushd "$ROOTFS/lib64/"
+    pushd "$ROOTFS/lib/"
     if ! [ -f libtcc1.a ]; then
         ln tcc/libtcc1.a libtcc1.a
     fi

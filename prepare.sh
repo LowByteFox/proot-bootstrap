@@ -20,12 +20,6 @@ for dir in bin include lib sbin; do
     ln -s usr/$dir $dir
 done
 
-echo ":: Symlinking lib64 to lib"
-ln -s usr/lib lib64
-pushd usr
-ln -s lib lib64
-popd
-
 echo ":: Linking sources to /usr/src"
 ln -s ../../sources usr/src
 

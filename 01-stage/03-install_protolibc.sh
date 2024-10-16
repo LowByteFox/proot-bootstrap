@@ -13,14 +13,15 @@ fi
 
 pushd sources
 
-if ! [ -f "musl.installed" ]; then
-    pushd musl-$MUSL_VERSION
+if ! [ -f "protolibc.installed" ]; then
+    pushd protolibc
     echo ":: Installing musl libc into the rootfs"
-    log musl.install.log make DESTDIR="$ROOTFS" install
+    log protolibc.install.log make DESTDIR="$ROOTFS" install
     popd
 
-    touch musl.installed
+    touch protolibc.installed
 fi
-echo ":: Musl libc installed in rootfs"
+
+echo ":: Protolibc installed in rootfs"
 
 popd

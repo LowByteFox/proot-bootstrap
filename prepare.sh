@@ -16,7 +16,8 @@ echo ":: Creating directories"
 
 mkdir boot dev etc home mnt proc root sys tmp usr var
 mkdir -p usr/{bin,include,lib,sbin,share}
-for dir in bin include lib sbin; do
+mkdir -p usr/local/{bin,include,lib,sbin,share}
+for dir in bin lib sbin; do
     ln -s usr/$dir $dir
 done
 
